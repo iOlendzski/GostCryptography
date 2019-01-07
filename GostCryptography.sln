@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GostCryptography", "Source\GostCryptography\GostCryptography.csproj", "{1520A79F-03EB-4290-AA4A-027806890A9D}"
 EndProject
@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{BE8FFE01
 		Build\Build.bat = Build\Build.bat
 		Build\GostCryptography.nuspec = Build\GostCryptography.nuspec
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GostCryptographyCore", "Source\GostCryptographyCore\GostCryptographyCore.csproj", "{E16912F0-5688-4F65-8B02-01CC2B5033CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,8 +29,15 @@ Global
 		{8B8700FF-449A-4801-8668-C620D1A9561E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B8700FF-449A-4801-8668-C620D1A9561E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B8700FF-449A-4801-8668-C620D1A9561E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E16912F0-5688-4F65-8B02-01CC2B5033CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E16912F0-5688-4F65-8B02-01CC2B5033CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E16912F0-5688-4F65-8B02-01CC2B5033CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E16912F0-5688-4F65-8B02-01CC2B5033CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE26B3FE-AA42-41B9-A50B-36923DBB69AC}
 	EndGlobalSection
 EndGlobal
