@@ -13,7 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{BE8FFE01
 		Build\GostCryptography.nuspec = Build\GostCryptography.nuspec
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GostCryptographyCore", "Source\GostCryptographyCore\GostCryptographyCore.csproj", "{E16912F0-5688-4F65-8B02-01CC2B5033CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GostCryptographyCore", "Source\GostCryptographyCore\GostCryptographyCore.csproj", "{E16912F0-5688-4F65-8B02-01CC2B5033CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GostCryptographyCore.Tests", "Source\GostCryptographyCore.Tests\GostCryptographyCore.Tests.csproj", "{0E906FB5-3056-4893-B030-63D9CA073680}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E16912F0-5688-4F65-8B02-01CC2B5033CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E16912F0-5688-4F65-8B02-01CC2B5033CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E16912F0-5688-4F65-8B02-01CC2B5033CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E906FB5-3056-4893-B030-63D9CA073680}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E906FB5-3056-4893-B030-63D9CA073680}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E906FB5-3056-4893-B030-63D9CA073680}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E906FB5-3056-4893-B030-63D9CA073680}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
