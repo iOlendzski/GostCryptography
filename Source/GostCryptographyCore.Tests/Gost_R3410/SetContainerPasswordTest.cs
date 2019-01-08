@@ -1,0 +1,128 @@
+﻿using System;
+using System.Security;
+
+using GostCryptography.Gost_R3410;
+
+
+using System.Security.Cryptography.X509Certificates;
+
+using GostCryptography.Base;
+
+using Xunit;
+
+
+namespace GostCryptography.Tests.Gost_R3410
+{
+	public class SetContainerPasswordTest
+	{
+		[Theory]
+		[MemberData(nameof(TestConfig.XGost_R3410_2001_Certificates), MemberType = typeof(TestConfig))]
+		public void ShouldSetContainerPassword_R3410_2001(TestCertificateInfo testCase)
+		{
+			// Given
+			var data = GetSomeData();
+			var certificate = testCase.Certificate;
+			var securePassword = CreateSecureString(TestConfig.ContainerPassword);
+
+			// When
+			var privateKeyInfo = certificate.GetPrivateKeyInfo();
+			var privateKey = new Gost_R3410_2001_AsymmetricAlgorithm(privateKeyInfo);
+			privateKey.SetContainerPassword(securePassword);
+
+			var signature = CreateSignature(privateKey, data);
+			var isValidSignature = VerifySignature(privateKey, data, signature);
+
+			// Then
+			Assert.True(isValidSignature);
+		}
+
+		[Theory]
+		[MemberData(nameof(TestConfig.XGost_R3410_2012_256_Certificates), MemberType = typeof(TestConfig))]
+		public void ShouldSetContainerPassword_R3410_2012_256(TestCertificateInfo testCase)
+		{
+			// Given
+			var data = GetSomeData();
+			var certificate = testCase.Certificate;
+			var securePassword = CreateSecureString(TestConfig.ContainerPassword);
+
+			// When
+			var privateKeyInfo = certificate.GetPrivateKeyInfo();
+			var privateKey = new Gost_R3410_2012_256_AsymmetricAlgorithm(privateKeyInfo);
+			privateKey.SetContainerPassword(securePassword);
+
+			var signature = CreateSignature(privateKey, data);
+			var isValidSignature = VerifySignature(privateKey, data, signature);
+
+			// Then
+			Assert.True(isValidSignature);
+		}
+
+		[Theory]
+		[MemberData(nameof(TestConfig.XGost_R3410_2012_512_Certificates), MemberType = typeof(TestConfig))]
+		public void ShouldSetContainerPassword_R3410_2012_512(TestCertificateInfo testCase)
+		{
+			// Given
+			var data = GetSomeData();
+			var certificate = testCase.Certificate;
+			var securePassword = CreateSecureString(TestConfig.ContainerPassword);
+
+			// When
+			var privateKeyInfo = certificate.GetPrivateKeyInfo();
+			var privateKey = new Gost_R3410_2012_512_AsymmetricAlgorithm(privateKeyInfo);
+			privateKey.SetContainerPassword(securePassword);
+
+			var signature = CreateSignature(privateKey, data);
+			var isValidSignature = VerifySignature(privateKey, data, signature);
+
+			// Then
+			Assert.True(isValidSignature);
+		}
+
+
+		private static byte[] CreateSignature(GostAsymmetricAlgorithm privateKey, byte[] data)
+		{
+			byte[] hash;
+
+			using (var hashAlg = privateKey.CreateHashAlgorithm())
+			{
+				hash = hashAlg.ComputeHash(data);
+			}
+
+			return privateKey.CreateSignature(hash);
+		}
+
+		private static bool VerifySignature(GostAsymmetricAlgorithm publicKey, byte[] data, byte[] signature)
+		{
+			byte[] hash;
+
+			using (var hashAlg = publicKey.CreateHashAlgorithm())
+			{
+				hash = hashAlg.ComputeHash(data);
+			}
+
+			return publicKey.VerifySignature(hash, signature);
+		}
+
+		private static SecureString CreateSecureString(string value)
+		{
+			var result = new SecureString();
+
+			foreach (var c in value)
+			{
+				result.AppendChar(c);
+			}
+
+			result.MakeReadOnly();
+
+			return result;
+		}
+
+		private static byte[] GetSomeData()
+		{
+			var random = new Random();
+			var data = new byte[1024];
+			random.NextBytes(data);
+			return data;
+		}
+	}
+}
