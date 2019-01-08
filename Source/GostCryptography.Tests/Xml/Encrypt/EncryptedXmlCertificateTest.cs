@@ -4,7 +4,7 @@ using System.Xml;
 using GostCryptography.Tests.Properties;
 using GostCryptography.Xml;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Xml.Encrypt
 {
@@ -15,11 +15,10 @@ namespace GostCryptography.Tests.Xml.Encrypt
 	/// Тест создает XML-документ, выборочно шифрует элементы данного документа с использованием сертификата,
 	/// а затем дешифрует полученный зашифрованный документ.
 	/// </remarks>
-	[TestFixture(Description = "Шифрация и дешифрация XML документа с использованием сертификата")]
 	public sealed class EncryptedXmlCertificateTest
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
 		public void ShouldEncryptXml(TestCertificateInfo testCase)
 		{
 			// Given

@@ -4,7 +4,7 @@ using System.Text;
 
 using GostCryptography.Base;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Sign
 {
@@ -15,11 +15,10 @@ namespace GostCryptography.Tests.Sign
 	/// Тест создает поток байт, вычисляет цифровую подпись потока байт с использованием закрытого ключа сертификата,
 	/// а затем с помощью открытого ключа сертификата проверяет полученную подпись.
 	/// </remarks>
-	[TestFixture(Description = "Подпись и проверка подписи потока байт с помощью сертификата")]
 	public class SignDataStreamCertificateTest
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
 		public void ShouldSignDataStream(TestCertificateInfo testCase)
 		{
 			// Given

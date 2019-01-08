@@ -6,7 +6,8 @@ using System.Text;
 using GostCryptography.Base;
 using GostCryptography.Gost_28147_89;
 
-using NUnit.Framework;
+using Xunit;
+
 
 namespace GostCryptography.Tests.Gost_28147_89
 {
@@ -19,11 +20,10 @@ namespace GostCryptography.Tests.Gost_28147_89
 	/// с использованием открытого ключа получателя. Соответственно для дешифрации данных сначала расшифровывается случайный симметричный ключ
 	/// с использованием закрытого ключа получателя.
 	/// </remarks>
-	[TestFixture(Description = "Шифрование и дешифрование данных с использованием случайного сессионного ключа")]
 	public class EncryptDecryptSessionKeyTest
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
+		[Theory]
+		[MemberData(nameof(TestConfig.Gost_R3410_Certificates), MemberType = typeof(TestConfig))]
 		public void ShouldEncryptAndDecrypt(TestCertificateInfo testCase)
 		{
 			// Given

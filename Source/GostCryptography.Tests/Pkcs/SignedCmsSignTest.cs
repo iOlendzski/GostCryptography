@@ -4,7 +4,7 @@ using System.Text;
 
 using GostCryptography.Pkcs;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Pkcs
 {
@@ -15,11 +15,10 @@ namespace GostCryptography.Tests.Pkcs
 	/// Тест создает сообщение, формирует подписанное сообщение в формате CMS/PKCS#7,
 	/// а затем проверяет подпись полученную цифровую подпись.
 	/// </remarks>
-	[TestFixture(Description = "Подпись и проверка подписи сообщения CMS/PKCS#7")]
 	public class SignedCmsSignTest
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
 		public void ShouldSign(TestCertificateInfo testCase)
 		{
 			// Given

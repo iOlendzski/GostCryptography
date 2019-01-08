@@ -4,7 +4,7 @@ using System.Text;
 
 using GostCryptography.Base;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Sign
 {
@@ -17,11 +17,10 @@ namespace GostCryptography.Tests.Sign
 	/// используется класс <see cref="GostSignatureFormatter"/>, для проверки цифровой подписи используется класс
 	/// <see cref="GostSignatureDeformatter"/>.
 	/// </remarks>
-	[TestFixture(Description = "Подпись и проверка подписи потока байт с помощью сертификата и классов форматирования")]
 	public class SignDataStreamSignatureFormatterTest
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
 		public void ShouldSignDataStream(TestCertificateInfo testCase)
 		{
 			// Given

@@ -3,7 +3,7 @@ using System.Security.Cryptography.Pkcs;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Pkcs
 {
@@ -13,11 +13,10 @@ namespace GostCryptography.Tests.Pkcs
 	/// <remarks>
 	/// Тест создает сообщение, шифрует его в формате CMS/PKCS#7, а затем дешифрует зашифрованное сообщение.
 	/// </remarks>
-	[TestFixture(Description = "Шифрация и дешифрация сообщения CMS/PKCS#7")]
 	public class EnvelopedCmsEncryptTest
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
 		public void ShouldEncryptAndDecrypt(TestCertificateInfo testCase)
 		{
 			// Given

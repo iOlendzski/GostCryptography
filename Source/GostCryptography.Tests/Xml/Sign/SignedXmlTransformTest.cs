@@ -6,7 +6,7 @@ using GostCryptography.Base;
 using GostCryptography.Tests.Properties;
 using GostCryptography.Xml;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Xml.Sign
 {
@@ -18,11 +18,10 @@ namespace GostCryptography.Tests.Xml.Sign
 	/// предварительно осуществляя XSLT-преобразование подписываемых данных, а затем проверяет полученную цифровую подпись.
 	/// </remarks>
 	[Ignore("TODO: Нужно произвести диагностику с подключением логирования")]
-	[TestFixture(Description = "Подпись и проверка подписи XML-документа с предварительным XSLT-преобразованием подписываемых данных")]
 	public sealed class SignedXmlTransformTest
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
 		public void ShouldSignXml(TestCertificateInfo testCase)
 		{
 			// Given

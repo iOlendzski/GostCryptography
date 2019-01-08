@@ -6,7 +6,7 @@ using GostCryptography.Base;
 using GostCryptography.Gost_28147_89;
 using GostCryptography.Gost_R3411;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Gost_R3411
 {
@@ -16,11 +16,10 @@ namespace GostCryptography.Tests.Gost_R3411
 	/// <remarks>
 	/// Тест выполняет подпись и проверку подписи потока байт с использованием HMAC.
 	/// </remarks>
-	[TestFixture(Description = "Вычисление HMAC на базе алгоритма хэширования ГОСТ Р 34.11-2012/256 и общего симметричного ключа ГОСТ 28147-89")]
 	public class Gost_R3411_2012_256_HMACTest
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Providers))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Providers))]
 		public void ShouldComputeHMAC(ProviderType providerType)
 		{
 			// Given

@@ -4,7 +4,7 @@ using System.Text;
 using GostCryptography.Base;
 using GostCryptography.Gost_R3411;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Gost_R3411
 {
@@ -14,11 +14,10 @@ namespace GostCryptography.Tests.Gost_R3411
 	/// <remarks>
 	/// Тест создает поток байт, вычисляет хэш в соответствии с ГОСТ Р 34.11-2012/256 и проверяет его корректность.
 	/// </remarks>
-	[TestFixture(Description = "Вычисление хэша в соответствии с ГОСТ Р 34.11-2012/256")]
 	public class Gost_R3411_2012_256_HashAlgorithmTest
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Providers))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Providers))]
 		public void ShouldComputeHash(ProviderType providerType)
 		{
 			// Given

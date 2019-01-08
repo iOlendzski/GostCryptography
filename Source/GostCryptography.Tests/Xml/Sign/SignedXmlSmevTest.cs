@@ -7,7 +7,7 @@ using GostCryptography.Base;
 using GostCryptography.Tests.Properties;
 using GostCryptography.Xml;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Xml.Sign
 {
@@ -18,14 +18,13 @@ namespace GostCryptography.Tests.Xml.Sign
 	/// Тест создает запрос к сервису СМЭВ, подписывает определенную часть данного запроса с использованием сертификата,
 	/// а затем проверяет полученную цифровую подпись.
 	/// </remarks>
-	[TestFixture(Description = "Подпись и проверка подписи запроса к сервису СМЭВ (Система межведомственного электронного взаимодействия)")]
 	public sealed class SignedXmlSmevTest
 	{
 		private const string WsSecurityExtNamespace = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
 		private const string WsSecurityUtilityNamespace = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd";
 
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
 		public void ShouldSignXml(TestCertificateInfo testCase)
 		{
 			// Given

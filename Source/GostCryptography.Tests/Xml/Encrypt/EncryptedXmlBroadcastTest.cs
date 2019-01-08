@@ -10,7 +10,7 @@ using GostCryptography.Gost_28147_89;
 using GostCryptography.Tests.Properties;
 using GostCryptography.Xml;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Xml.Encrypt
 {
@@ -23,11 +23,10 @@ namespace GostCryptography.Tests.Xml.Encrypt
 	/// с использованием публичного ключа сертификата получателя. Расшифровка документа происходит с использованием первого 
 	/// найденного секретного ключа сертификата получателя.
 	/// </remarks>
-	[TestFixture(Description = "Шифрация и дешифрация XML для широковещательной рассылки")]
 	public sealed class EncryptedXmlBroadcastTest
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
 		public void ShouldEncryptXml(TestCertificateInfo testCase)
 		{
 			// Given

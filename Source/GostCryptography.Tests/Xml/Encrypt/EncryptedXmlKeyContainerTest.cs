@@ -8,7 +8,7 @@ using GostCryptography.Gost_R3410;
 using GostCryptography.Tests.Properties;
 using GostCryptography.Xml;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Xml.Encrypt
 {
@@ -29,11 +29,10 @@ namespace GostCryptography.Tests.Xml.Encrypt
 	/// полученный зашифрованный документ. Случайный симметричного ключ в свою очередь шифруется открытым асимметричным ключом получателя и в зашифрованном
 	/// виде добавляется в зашифрованный документ.
 	/// </remarks>
-	[TestFixture(Description = "Шифрация и дешифрация XML с использованием контейнера ключей")]
 	public class EncryptedXmlKeyContainerTest
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2001_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2001_Certificates))]
 		public void ShouldEncryptXmlWithGost_R3410_2001(TestCertificateInfo testCase)
 		{
 			// Given
@@ -61,8 +60,8 @@ namespace GostCryptography.Tests.Xml.Encrypt
 			Assert.AreEqual(expectedXml, actualXml);
 		}
 
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2012_256_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2012_256_Certificates))]
 		public void ShouldEncryptXmlWithGost_R3410_2012_256(TestCertificateInfo testCase)
 		{
 			// Given
@@ -90,8 +89,8 @@ namespace GostCryptography.Tests.Xml.Encrypt
 			Assert.AreEqual(expectedXml, actualXml);
 		}
 
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2012_512_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2012_512_Certificates))]
 		public void ShouldEncryptXmlWithGost_R3410_2012_512(TestCertificateInfo testCase)
 		{
 			// Given

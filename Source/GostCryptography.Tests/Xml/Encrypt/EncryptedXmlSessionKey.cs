@@ -6,7 +6,7 @@ using GostCryptography.Gost_28147_89;
 using GostCryptography.Tests.Properties;
 using GostCryptography.Xml;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Xml.Encrypt
 {
@@ -18,11 +18,10 @@ namespace GostCryptography.Tests.Xml.Encrypt
 	/// а затем дешифрует полученный зашифрованный документ. Случайный симметричного ключ в свою очередь шифруется общим симметричным
 	/// ключом и в зашифрованном виде добавляется в зашифрованный документ.
 	/// </remarks>
-	[TestFixture(Description = "Шифрация и дешифрация XML с использованием случайного сессионного ключа")]
 	public class EncryptedXmlSessionKey
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Providers))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Providers))]
 		public void ShouldEncryptXml(ProviderType providerType)
 		{
 			// Given

@@ -6,7 +6,7 @@ using GostCryptography.Base;
 using GostCryptography.Tests.Properties;
 using GostCryptography.Xml;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Xml.Sign
 {
@@ -17,11 +17,10 @@ namespace GostCryptography.Tests.Xml.Sign
 	/// Тест создает XML-документ, подписывает весь документ с использованием сертификата,
 	/// а затем проверяет полученную цифровую подпись.
 	/// </remarks>
-	[TestFixture(Description = "Подпись и проверка подписи всего XML документа с использованием сертификата")]
 	public class SignedXmlDocumentTest
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
 		public void ShouldSignXml(TestCertificateInfo testCase)
 		{
 			// Given

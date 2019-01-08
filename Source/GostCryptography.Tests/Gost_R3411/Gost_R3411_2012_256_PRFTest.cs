@@ -4,14 +4,13 @@ using GostCryptography.Base;
 using GostCryptography.Gost_28147_89;
 using GostCryptography.Gost_R3411;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Gost_R3411
 {
 	/// <summary>
 	/// Использование PRF на базе алгоритма хэширования ГОСТ Р 34.11-2012/256.
 	/// </summary>
-	[TestFixture(Description = "Использование PRF на базе алгоритма хэширования ГОСТ Р 34.11-2012/256")]
 	public class Gost_R3411_2012_256_PRFTest
 	{
 		private static readonly byte[] Label = { 1, 2, 3, 4, 5 };
@@ -19,8 +18,8 @@ namespace GostCryptography.Tests.Gost_R3411
 		private static readonly byte[] TestData = Encoding.UTF8.GetBytes("Some data to encrypt...");
 
 
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Providers))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Providers))]
 		public void ShouldDeriveBytes(ProviderType providerType)
 		{
 			// Given
@@ -51,8 +50,8 @@ namespace GostCryptography.Tests.Gost_R3411
 			CollectionAssert.AreNotEqual(randomBytes2, randomBytes3);
 		}
 
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Providers))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Providers))]
 		public void ShouldDeriveKey(ProviderType providerType)
 		{
 			// TODO: VipNet does not support this feature - https://infotecs.ru/forum/topic/10142-oshibka-pri-sozdanii-klyucha-shifrovaniya-na-osnove-dannyih-polzovatelya-cryptderivekey/

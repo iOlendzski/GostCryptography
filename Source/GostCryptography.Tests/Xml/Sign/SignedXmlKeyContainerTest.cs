@@ -7,7 +7,7 @@ using GostCryptography.Gost_R3410;
 using GostCryptography.Tests.Properties;
 using GostCryptography.Xml;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Xml.Sign
 {
@@ -18,11 +18,10 @@ namespace GostCryptography.Tests.Xml.Sign
 	/// Тест создает XML-документ, подписывает определенную часть данного документа с использованием контейнера ключей,
 	/// а затем проверяет полученную цифровую подпись.
 	/// </remarks>
-	[TestFixture(Description = "Подпись и проверка подписи XML-документа с использованием контейнера ключей")]
 	public class SignedXmlKeyContainerTest
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2001_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2001_Certificates))]
 		public void ShouldSignXmlWithGost_R3410_2001(TestCertificateInfo testCase)
 		{
 			// Given
@@ -38,8 +37,8 @@ namespace GostCryptography.Tests.Xml.Sign
 			Assert.IsTrue(VerifyXmlDocumentSignature(signedXmlDocument));
 		}
 
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2012_256_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2012_256_Certificates))]
 		public void ShouldSignXmlWithGost_R3410_2012_256(TestCertificateInfo testCase)
 		{
 			// Given
@@ -55,8 +54,8 @@ namespace GostCryptography.Tests.Xml.Sign
 			Assert.IsTrue(VerifyXmlDocumentSignature(signedXmlDocument));
 		}
 
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2012_512_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2012_512_Certificates))]
 		public void ShouldSignXmlWithGost_R3410_2012_512(TestCertificateInfo testCase)
 		{
 			// Given

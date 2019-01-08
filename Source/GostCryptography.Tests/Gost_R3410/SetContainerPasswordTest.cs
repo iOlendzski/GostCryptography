@@ -3,18 +3,17 @@ using System.Security;
 
 using GostCryptography.Gost_R3410;
 
-using NUnit.Framework;
+
 using System.Security.Cryptography.X509Certificates;
 
 using GostCryptography.Base;
 
 namespace GostCryptography.Tests.Gost_R3410
 {
-	[TestFixture(Description = "Проверка возможности установки пароля для контейнера ключей")]
 	public class SetContainerPasswordTest
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2001_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2001_Certificates))]
 		public void ShouldSetContainerPassword_R3410_2001(TestCertificateInfo testCase)
 		{
 			// Given
@@ -35,8 +34,8 @@ namespace GostCryptography.Tests.Gost_R3410
 			Assert.IsTrue(isValidSignature);
 		}
 
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2012_256_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2012_256_Certificates))]
 		public void ShouldSetContainerPassword_R3410_2012_256(TestCertificateInfo testCase)
 		{
 			// Given
@@ -57,8 +56,8 @@ namespace GostCryptography.Tests.Gost_R3410
 			Assert.IsTrue(isValidSignature);
 		}
 
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2012_512_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_2012_512_Certificates))]
 		public void ShouldSetContainerPassword_R3410_2012_512(TestCertificateInfo testCase)
 		{
 			// Given

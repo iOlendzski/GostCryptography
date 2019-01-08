@@ -5,7 +5,7 @@ using System.Text;
 using GostCryptography.Base;
 using GostCryptography.Gost_28147_89;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Gost_28147_89
 {
@@ -15,11 +15,10 @@ namespace GostCryptography.Tests.Gost_28147_89
 	/// <remarks>
 	/// Тест выполняет подпись и проверку подписи потока байт с использованием имитовставки.
 	/// </remarks>
-	[TestFixture(Description = "Вычисление имитовставки на базе общего симметричного ключа ГОСТ 28147-89")]
 	public class Gost_28147_89_ImitHashAlgorithmTest
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Providers))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Providers))]
 		public void ShouldComputeImitHash(ProviderType providerType)
 		{
 			// Given

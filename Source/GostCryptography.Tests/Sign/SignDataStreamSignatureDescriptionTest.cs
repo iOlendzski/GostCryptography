@@ -6,7 +6,7 @@ using System.Text;
 using GostCryptography.Base;
 using GostCryptography.Config;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Sign
 {
@@ -19,11 +19,10 @@ namespace GostCryptography.Tests.Sign
 	/// и ее проверки используется информация об алгоритме цифровой подписи <see cref="SignatureDescription"/>,
 	/// получаемая с помощью метода <see cref="GostCryptoConfig.CreateFromName"/>.
 	/// </remarks>
-	[TestFixture(Description = "Подпись и проверка подписи потока байт с помощью сертификата и информации об алгоритме цифровой подписи")]
 	public class SignDataStreamSignatureDescriptionTest
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Gost_R3410_Certificates))]
 		public void ShouldSignDataStream(TestCertificateInfo testCase)
 		{
 			// Given

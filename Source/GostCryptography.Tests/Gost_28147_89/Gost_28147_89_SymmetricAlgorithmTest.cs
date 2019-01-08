@@ -5,7 +5,7 @@ using System.Text;
 using GostCryptography.Base;
 using GostCryptography.Gost_28147_89;
 
-using NUnit.Framework;
+
 
 namespace GostCryptography.Tests.Gost_28147_89
 {
@@ -16,11 +16,10 @@ namespace GostCryptography.Tests.Gost_28147_89
 	/// Тест создает поток байт, шифрует его с использованием общего симметричного ключа,
 	/// а затем дешифрует зашифрованные данные и проверяет корректность дешифрации.
 	/// </remarks>
-	[TestFixture(Description = "Шифрование и дешифрование данных с использованием общего симметричного ключа ГОСТ 28147-89")]
 	public class Gost_28147_89_SymmetricAlgorithmTest
 	{
-		[Test]
-		[TestCaseSource(typeof(TestConfig), nameof(TestConfig.Providers))]
+		[Theory]
+		[MemberData(typeof(TestConfig), nameof(TestConfig.Providers))]
 		public void ShouldEncryptAndDecrypt(ProviderType providerType)
 		{
 			// Given
