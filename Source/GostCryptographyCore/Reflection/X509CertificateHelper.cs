@@ -108,6 +108,25 @@ namespace System.Security.Cryptography.X509Certificates
 
 			if (certificate.HasPrivateKey)
 			{
+				try
+				{
+					var type = typeof(X509Certificate2);
+					var mis = type.GetMethods();
+					var pis = type.GetProperties();
+					var fis = type.GetFields();
+					Console.WriteLine(mis.Length);
+					Console.WriteLine(pis.Length);
+					Console.WriteLine(fis.Length);
+					// var privateKey = certificate.PrivateKey;
+					// Console.WriteLine(privateKey);
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex);
+					throw;
+				}
+
+
 				if (_getPrivateKeyInfoMethod == null)
 				{
 					lock (GetPrivateKeyInfoMethodSync)

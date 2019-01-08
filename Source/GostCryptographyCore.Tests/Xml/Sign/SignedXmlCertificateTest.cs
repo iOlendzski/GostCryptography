@@ -22,7 +22,6 @@ namespace GostCryptography.Tests.Xml.Sign
 	/// </remarks>
 	public class SignedXmlCertificateTest
 	{
-		[Trait("Category", "Xml")]
 		[Theory]
 		[MemberData(nameof(TestConfig.XGost_R3410_Certificates), MemberType = typeof(TestConfig))]
 		public void ShouldSignXml(TestCertificateInfo testCase)
